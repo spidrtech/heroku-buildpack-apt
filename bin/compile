@@ -58,7 +58,6 @@ APT_OPTIONS="$APT_OPTIONS -o dir::etc::sourcelist=$APT_SOURCES"
 
 topic "Updating apt caches"
 apt-get $APT_OPTIONS update | indent
-sudo apt-get $APT_OPTIONS -y install --only-upgrade dpkg | indent # Hack to upgrade dpkg to the latest version (for Ubuntu 14.04 images)
 
 for PACKAGE in $(cat $BUILD_DIR/Aptfile | grep -v -s -e "^:repo:"); do
   if [[ $PACKAGE == *deb ]]; then
